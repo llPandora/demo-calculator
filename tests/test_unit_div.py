@@ -23,7 +23,7 @@ def test_div():
     b=7
     res = c.get("_calculate",query_string=qstr(a,'/',b))
     assert res.status_code == 200
-    assert extr(res) == a/b
+    assert extr(res) == a + b
 
     a = -123341
     b = -48314271
