@@ -23,11 +23,8 @@ node {
       
     }
     stage('Push'){
-      def latestImage = docker.build("reg.llharpy.com/calculator:latest")
       customImage.push()
-      latestImage.push()
       sh "docker rmi ${customImage.id}"
-      sh "docker rmi ${latestImage.id}"
     }
     stage('Deploy'){
       
