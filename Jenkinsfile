@@ -28,6 +28,7 @@ node {
                 sh "docker -H 192.168.0.10 stop haruno_calculator || true"
                 sh "docker -H 192.168.0.10 run -d --rm -p 8080:8080 --name haruno_calculator reg.llharpy.com/calculator:${env.BRANCH_NAME}_${env.BUILD_ID}"
             }
+
             
             stage('Notify Slack'){
                 slackSend baseUrl:'https://globenet.slack.com/services/hooks/jenkins-ci/' , token: '9uVPCr3qCxZTyGz2symRKiiF', message:"reg.llharpy.com/calculator:${env.BRANCH_NAME}_${env.BUILD_ID} successfully deployed"
